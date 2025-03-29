@@ -15,7 +15,7 @@ export default function Model(props) {
         <group name="Low_Poly_Computer_Desk" scale={0.031}>
           <group
             name="CD"
-            position={[-76.998, 75.076, 57.333]}
+            position={[-76.998, 75.076 - 2 , 57.333]}
             rotation={[-Math.PI, 1.261, -Math.PI]}
             scale={0.1}>
             <mesh

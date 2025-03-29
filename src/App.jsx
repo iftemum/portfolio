@@ -1,13 +1,13 @@
 import { Canvas, useThree, useLoader } from "@react-three/fiber";
-import { MeshReflectorMaterial } from "@react-three/drei";
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
 import { Suspense } from 'react'
 import Model from './Model'
 
 export default function App() {
   return (
-    <Canvas className="canvas">
+    <Canvas className="canvas" camera={{ position: [-2.00, 2.41, 8.44] }}>
       <Scene />
+      <OrbitControls />
     </Canvas>
   );
 }
@@ -17,20 +17,31 @@ const Scene = () => {
   // taking the viewport size and using it to create the walls and floor
   const { viewport } = useThree();
 
-
   return (
     <>
-      <ambientLight intensity={100} />
-      <directionalLight position={[5, 5, 5]} color="white" />
-      <Floor viewport={viewport} />
-      <Wall viewport={viewport} />
-      <Suspense fallback={null}>
-        <Model />
-      </Suspense>
+    <Ligthing/>
+    <Floor viewport={viewport} />
+    <Wall viewport={viewport} />
+    <Suspense fallback={null}>
+      <Model position={[0, -1, 0]} />
+    </Suspense>    
     </>
   );
 };
 
+const Ligthing = () => {
+  return (
+    <>
+    <ambientLight intensity={1} /> 
+    <directionalLight
+      position={[10, 10, 5]}
+      intensity={1}
+      castShadow
+    />
+    <pointLight position={[0, 5, 0]} intensity={0.5} />
+    </>
+  )
+}
 
 /**
  * Floor component creates a reflective surface using MeshReflectorMaterial
@@ -77,8 +88,8 @@ const Wall = ({ viewport }) => {
   return (
     <group>
       {/* Back wall - positioned to align perfectly with the floor's back edge
-          The z-position (-wallHeight + 7.8) was fine-tuned to eliminate any gaps */}
-      <mesh position={[0, wallHeight / 2  - 1 , -wallHeight + 7.8 ]}>
+          The z-position (-wallHeight + 16.6) was fine-tuned to eliminate any gaps */}
+      <mesh position={[0, wallHeight / 2  - 5 , -wallHeight + 16 ]}>
         <planeGeometry args={[wallWidth, wallHeight]} />
         <meshStandardMaterial color="#151515" metalness={0.5} roughness={0.8} />
       </mesh>
