@@ -1,13 +1,13 @@
 import { Canvas, useThree, useLoader } from "@react-three/fiber";
 import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Model from './Model'
 
 export default function App() {
   return (
     <Canvas className="canvas" camera={{ position: [-2.00, 2.41, 8.44] }}>
       <Scene />
-      <OrbitControls />
+      <OrbitControls enableZoom={false} enablePan={false} enableRotate={false}/>
     </Canvas>
   );
 }
@@ -16,10 +16,26 @@ export default function App() {
 const Scene = () => {
   // taking the viewport size and using it to create the walls and floor
   const { viewport } = useThree();
+  const [lightsOn, setLightsOn] = useState(false);
+  
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.code === 'Space') {
+        setLightsOn(prevState => !prevState);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Clean up the event listener when component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
-    <Ligthing/>
+    <SceneLighting isOn={lightsOn} />
     <Floor viewport={viewport} />
     <Wall viewport={viewport} />
     <Suspense fallback={null}>
@@ -29,19 +45,36 @@ const Scene = () => {
   );
 };
 
-const Ligthing = () => {
+const SceneLighting = ({ isOn }) => {
   return (
     <>
-    <ambientLight intensity={1} /> 
-    <directionalLight
-      position={[10, 10, 5]}
-      intensity={1}
-      castShadow
-    />
-    <pointLight position={[0, 5, 0]} intensity={0.5} />
+      {/* Very dim ambient light always on to give just a hint of the desk */}
+      <ambientLight intensity={0.05} /> 
+      
+      {/* Main lights only on when spacebar is pressed */}
+      {isOn && (
+        <>
+          <ambientLight intensity={0.95} /> 
+          <directionalLight
+            position={[10, 10, 5]}
+            intensity={4}
+            castShadow
+          />
+          <pointLight position={[0, 5, 0]} intensity={0.5} />
+          <spotLight
+            position={[0.10, 4.77, 0.99]}   
+            angle={0.7}                
+            penumbra={0.3}             
+            intensity={200}  
+            color="#fff8e7"
+            castShadow
+            target-position={[0, -1, 2]} 
+          />
+        </>
+      )}
     </>
-  )
-}
+  );
+};
 
 /**
  * Floor component creates a reflective surface using MeshReflectorMaterial
