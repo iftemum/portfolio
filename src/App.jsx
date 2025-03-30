@@ -1,7 +1,45 @@
 import { Canvas, useThree, useLoader } from "@react-three/fiber";
-import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
+import { MeshReflectorMaterial, OrbitControls, Html } from "@react-three/drei";
 import { Suspense, useState, useEffect } from 'react'
 import Model from './Model'
+
+// Add this new component
+const WelcomeMessage = () => {
+  return (
+    <Html fullscreen>
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        color: 'rgba(255, 255, 255, 0.9)',
+        fontSize: '2rem',
+        textAlign: 'center',
+        fontFamily: 'monospace',
+        textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+        animation: 'pulse 2s infinite',
+        pointerEvents: 'none',
+        userSelect: 'none'
+      }}>
+        Welcome to Iftemum's Portfolio
+        <div style={{
+          fontSize: '1rem',
+          marginTop: '1rem',
+          opacity: 0.8
+        }}>
+          Press SPACE to illuminate
+        </div>
+      </div>
+      <style>{`
+        @keyframes pulse {
+          0% { opacity: 0.8; }
+          50% { opacity: 0.4; }
+          100% { opacity: 0.8; }
+        }
+      `}</style>
+    </Html>
+  );
+};
 
 export default function App() {
   return (
@@ -12,15 +50,18 @@ export default function App() {
   );
 }
 
+
 // This is the main scene component
 const Scene = () => {
   // taking the viewport size and using it to create the walls and floor
   const { viewport } = useThree();
   const [lightsOn, setLightsOn] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.code === 'Space') {
+        // if the lights are on, turn them off and vice versa
         setLightsOn(prevState => !prevState);
       }
     };
@@ -38,13 +79,46 @@ const Scene = () => {
     <SceneLighting isOn={lightsOn} />
     <Floor viewport={viewport} />
     <Wall viewport={viewport} />
-    <Suspense fallback={null}>
-      <Model position={[0, -1, 0]} />
+    <Suspense fallback={
+      <Html fullscreen>
+        <div style={{
+          color: 'white',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)'
+        }}>
+          Entering the void...
+        </div>
+      </Html>
+    }>
+      <Model 
+        position={[0, -1, 0]} 
+        onLoaded={() => setLoaded(true)}
+      />
+      {loaded && !lightsOn && <WelcomeMessage />}
     </Suspense>    
     </>
   );
 };
 
+
+/**
+ * SceneLighting component handles all the lighting in the scene
+ * It creates a moody atmosphere with two states:
+ * 1. Dark Mode: Only a very dim ambient light (0.05 intensity) to barely show the desk silhouette
+ * 2. Light Mode: Multiple lights that fully illuminate the scene when spacebar is pressed
+ * 
+ * The lighting setup includes:
+ * - A base ambient light that's always on
+ * - A brighter ambient light for overall scene illumination
+ * - A directional light to create shadows and depth
+ * - A point light for general room lighting
+ * - A spotlight focused on the desk area for dramatic emphasis
+ * 
+ * @param {Object} props
+ * @param {boolean} props.isOn - Controls whether the main lights are on or off
+ */
 const SceneLighting = ({ isOn }) => {
   return (
     <>
