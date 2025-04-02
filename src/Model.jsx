@@ -17,7 +17,23 @@ export default function Model(props) {
   }, [props.onLoaded]);
   
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group 
+      ref={group} 
+      {...props} 
+      dispose={null}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (props.onClick) props.onClick(e);
+      }}
+      onPointerOver={(e) => {
+        e.stopPropagation();
+        if (props.onPointerOver) props.onPointerOver();
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        if (props.onPointerOut) props.onPointerOut();
+      }}
+    >
       <group name="Scene">
         <group name="Low_Poly_Computer_Desk" scale={0.031}>
           <group

@@ -1,7 +1,8 @@
-import { Canvas, useThree, useLoader } from "@react-three/fiber";
-import { MeshReflectorMaterial, OrbitControls, Html } from "@react-three/drei";
-import { Suspense, useState, useEffect } from 'react'
+import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { MeshReflectorMaterial, CameraControls, Html } from "@react-three/drei";
+import { Suspense, useState, useEffect, useRef } from 'react'
 import Model from './Model'
+import * as THREE from 'three';
 
 // Add this new component
 const WelcomeMessage = () => {
@@ -41,23 +42,83 @@ const WelcomeMessage = () => {
   );
 };
 
+// Camera controller component to handle transitions
+const CameraController = ({ lightsOn, deskClicked, cameraControlsRef }) => {
+  const initialPosition = new THREE.Vector3(-2.00, 2.41, 8.44);
+  const initialTarget = new THREE.Vector3(0, 0, 0);
+  const targetPosition = new THREE.Vector3(0, 1.5, 2);
+  const monitorPosition = new THREE.Vector3(0, 1, 0);
+  
+  useEffect(() => {
+    if (!cameraControlsRef.current) return;
+    
+    if (lightsOn && deskClicked) {
+      cameraControlsRef.current.setLookAt(
+        targetPosition.x, targetPosition.y + 0.7, targetPosition.z,
+        monitorPosition.x, monitorPosition.y + 0.5, monitorPosition.z,
+        true // enable transition
+      );
+    } else {
+      cameraControlsRef.current.setLookAt(
+        initialPosition.x, initialPosition.y, initialPosition.z,
+        initialTarget.x, initialTarget.y, initialTarget.z,
+        true // enable transition
+      );
+    }
+  }, [lightsOn, deskClicked, cameraControlsRef]);
+  
+  return null;
+};
+
 export default function App() {
+  const [controlsEnabled, setControlsEnabled] = useState(false);
+  const [lightsOn, setLightsOn] = useState(false);
+  const [deskClicked, setDeskClicked] = useState(false);
+  const cameraControlsRef = useRef();
+  
+  useEffect(() => {
+    setControlsEnabled(lightsOn);
+  }, [lightsOn]);
+  
   return (
     <Canvas className="canvas" camera={{ position: [-2.00, 2.41, 8.44] }}>
-      <Scene />
-      <OrbitControls enableZoom={false} enablePan={false} enableRotate={false}/>
+      <Scene 
+        setLightsOn={setLightsOn} 
+        lightsOn={lightsOn} 
+        deskClicked={deskClicked} 
+        setDeskClicked={setDeskClicked} 
+      />
+      <CameraController 
+        lightsOn={lightsOn} 
+        deskClicked={deskClicked}
+        cameraControlsRef={cameraControlsRef} 
+      />
+      <CameraControls 
+        ref={cameraControlsRef}
+        enabled={controlsEnabled}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 2}
+        minDistance={1}
+        maxDistance={5}
+      />
     </Canvas>
   );
-}
+} 
 
 
 // This is the main scene component
-const Scene = () => {
+const Scene = ({ setLightsOn, lightsOn, deskClicked, setDeskClicked }) => {
   // taking the viewport size and using it to create the walls and floor
   const { viewport } = useThree();
-  const [lightsOn, setLightsOn] = useState(false);
   const [loaded, setLoaded] = useState(false);
   
+
+  const focusOnMonitor = () => {
+    if (lightsOn) {
+      setDeskClicked(true);
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.code === 'Space') {
@@ -72,7 +133,7 @@ const Scene = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [setLightsOn]);
 
   return (
     <>
@@ -95,6 +156,7 @@ const Scene = () => {
       <Model 
         position={[0, -1, 0]} 
         onLoaded={() => setLoaded(true)}
+        onClick={focusOnMonitor}
       />
       {loaded && !lightsOn && <WelcomeMessage />}
     </Suspense>    
