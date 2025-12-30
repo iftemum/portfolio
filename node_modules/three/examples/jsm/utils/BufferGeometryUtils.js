@@ -11,7 +11,10 @@ import {
 	Vector3,
 } from 'three';
 
-/** @module BufferGeometryUtils */
+/**
+ * @module BufferGeometryUtils
+ * @three_import import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
+ */
 
 /**
  * Computes vertex tangents using the MikkTSpace algorithm. MikkTSpace generates the same tangents consistently,
@@ -443,7 +446,7 @@ function deepCloneAttribute( attribute ) {
  * single {@link InterleavedBuffer} instance. All attributes must have compatible types.
  *
  * @param {Array<BufferAttribute>} attributes - The attributes to interleave.
- * @return {Array<InterleavedBufferAttribute>} An array of interleaved attributes. If interleave does not succeed, the method returns `null`.
+ * @return {?Array<InterleavedBufferAttribute>} An array of interleaved attributes. If interleave does not succeed, the method returns `null`.
  */
 function interleaveAttributes( attributes ) {
 

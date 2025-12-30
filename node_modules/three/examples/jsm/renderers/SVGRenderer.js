@@ -19,6 +19,7 @@ import {
  * Can be used to wrap SVG elements into a 3D object.
  *
  * @augments Object3D
+ * @three_import import { SVGObject } from 'three/addons/renderers/SVGRenderer.js';
  */
 class SVGObject extends Object3D {
 
@@ -69,6 +70,8 @@ class SVGObject extends Object3D {
  * - No advanced shading.
  * - No texture support.
  * - No shadow support.
+ *
+ * @three_import import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
  */
 class SVGRenderer {
 
@@ -117,7 +120,7 @@ class SVGRenderer {
 		/**
 		 * The DOM where the renderer appends its child-elements.
 		 *
-		 * @type {DOMElement}
+		 * @type {SVGSVGElement}
 		 */
 		this.domElement = _svg;
 

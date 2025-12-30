@@ -36,6 +36,7 @@ import { texture, textureLoad, uv, ivec2, vec2, vec4, positionGeometry, referenc
  * ```
  *
  * @augments Mesh
+ * @three_import import { LensflareMesh } from 'three/addons/objects/LensflareMesh.js';
  */
 class LensflareMesh extends Mesh {
 
@@ -109,7 +110,7 @@ class LensflareMesh extends Mesh {
 		material1a.type = 'Lensflare-1a';
 
 		material1a.vertexNode = vertexNode;
-		material1a.fragmentNode = vec4( 1.0, 0.0, 1.0, 1.0 );
+		material1a.colorNode = vec4( 1.0, 0.0, 1.0, 1.0 );
 
 		const material1b = new NodeMaterial();
 
@@ -120,7 +121,7 @@ class LensflareMesh extends Mesh {
 		material1b.type = 'Lensflare-1b';
 
 		material1b.vertexNode = vertexNode;
-		material1b.fragmentNode = texture( tempMap, vec2( uv().flipY() ) );
+		material1b.colorNode = texture( tempMap, vec2( uv().flipY() ) );
 
 		// the following object is used for occlusionMap generation
 
@@ -173,7 +174,7 @@ class LensflareMesh extends Mesh {
 
 		} )();
 
-		material2.fragmentNode = Fn( () => {
+		material2.colorNode = Fn( () => {
 
 			const color = reference( 'color', 'color' );
 			const map = reference( 'map', 'texture' );

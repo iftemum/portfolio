@@ -90,6 +90,8 @@ class XRHandModel extends Object3D {
  * hand.add( handModelFactory.createHandModel( hand ) );
  * scene.add( hand );
  * ```
+ *
+ * @three_import import { XRHandModelFactory } from 'three/addons/webxr/XRHandModelFactory.js';
  */
 class XRHandModelFactory {
 
@@ -177,16 +179,12 @@ class XRHandModelFactory {
 
 			}
 
-			controller.visible = true;
-
 		} );
 
 		controller.addEventListener( 'disconnected', () => {
 
-			controller.visible = false;
-			// handModel.motionController = null;
-			// handModel.remove( scene );
-			// scene = null;
+			handModel.clear();
+			handModel.motionController = null;
 
 		} );
 

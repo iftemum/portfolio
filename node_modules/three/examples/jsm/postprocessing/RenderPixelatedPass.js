@@ -19,6 +19,7 @@ import { Pass, FullScreenQuad } from './Pass.js';
  * ```
  *
  * @augments Pass
+ * @three_import import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
  */
 class RenderPixelatedPass extends Pass {
 
@@ -120,7 +121,7 @@ class RenderPixelatedPass extends Pass {
 	 * Sets the size of the pass.
 	 *
 	 * @param {number} width - The width to set.
-	 * @param {number} height - The width to set.
+	 * @param {number} height - The height to set.
 	 */
 	setSize( width, height ) {
 

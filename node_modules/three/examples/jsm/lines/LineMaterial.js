@@ -311,6 +311,9 @@ ShaderLib[ 'line' ] = {
 
 		void main() {
 
+			float alpha = opacity;
+			vec4 diffuseColor = vec4( diffuse, alpha );
+
 			#include <clipping_planes_fragment>
 
 			#ifdef USE_DASH
@@ -320,8 +323,6 @@ ShaderLib[ 'line' ] = {
 				if ( mod( vLineDistance + dashOffset, dashSize + gapSize ) > dashSize ) discard; // todo - FIX
 
 			#endif
-
-			float alpha = opacity;
 
 			#ifdef WORLD_UNITS
 
@@ -387,8 +388,6 @@ ShaderLib[ 'line' ] = {
 
 			#endif
 
-			vec4 diffuseColor = vec4( diffuse, alpha );
-
 			#include <logdepthbuf_fragment>
 			#include <color_fragment>
 
@@ -413,6 +412,7 @@ ShaderLib[ 'line' ] = {
  * use {@link Line2NodeMaterial}.
  *
  * @augments ShaderMaterial
+ * @three_import import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
  */
 class LineMaterial extends ShaderMaterial {
 

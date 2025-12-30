@@ -46,6 +46,7 @@ import chevrotain from '../libs/chevrotain.module.min.js';
  * ```
  *
  * @augments Loader
+ * @three_import import { VRMLLoader } from 'three/addons/loaders/VRMLLoader.js';
  */
 class VRMLLoader extends Loader {
 
@@ -3140,7 +3141,7 @@ class VRMLLoader extends Loader {
 
 				color.fromBufferAttribute( attribute, i );
 
-				ColorManagement.toWorkingColorSpace( color, SRGBColorSpace );
+				ColorManagement.colorSpaceToWorking( color, SRGBColorSpace );
 
 				attribute.setXYZ( i, color.r, color.g, color.b );
 
@@ -3247,7 +3248,7 @@ class VRMLLoader extends Loader {
 
 				color.copy( colorA ).lerp( colorB, t );
 
-				ColorManagement.toWorkingColorSpace( color, SRGBColorSpace );
+				ColorManagement.colorSpaceToWorking( color, SRGBColorSpace );
 
 				colorAttribute.setXYZ( index, color.r, color.g, color.b );
 

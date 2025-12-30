@@ -17,6 +17,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
+ * @three_import import { SavePass } from 'three/addons/postprocessing/SavePass.js';
  */
 class SavePass extends Pass {
 
@@ -104,7 +105,7 @@ class SavePass extends Pass {
 	 * Sets the size of the pass.
 	 *
 	 * @param {number} width - The width to set.
-	 * @param {number} height - The width to set.
+	 * @param {number} height - The height to set.
 	 */
 	setSize( width, height ) {
 

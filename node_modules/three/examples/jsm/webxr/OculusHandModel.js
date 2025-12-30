@@ -8,6 +8,7 @@ const POINTING_JOINT = 'index-finger-tip';
  * Represents an Oculus hand model.
  *
  * @augments Object3D
+ * @three_import import { OculusHandModel } from 'three/addons/webxr/OculusHandModel.js';
  */
 class OculusHandModel extends Object3D {
 
@@ -121,7 +122,7 @@ class OculusHandModel extends Object3D {
 	/**
 	 * Returns the pointer position which is the position of the index finger tip.
 	 *
-	 * @return {Vector3|null} The pointer position. Returns `null` if not index finger tip joint was found.
+	 * @return {?Vector3} The pointer position. Returns `null` if not index finger tip joint was found.
 	 */
 	getPointerPosition() {
 

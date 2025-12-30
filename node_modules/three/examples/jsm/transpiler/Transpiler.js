@@ -1,9 +1,13 @@
+import Linker from './Linker.js';
+
 /**
  * A class that transpiles shader code from one language into another.
  *
  * `Transpiler` can only be used to convert GLSL into TSL right now. It is intended
  * to support developers when they want to migrate their custom materials from the
  * current to the new node-based material system.
+ *
+ * @three_import import Transpiler from 'three/addons/transpiler/Transpiler.js';
  */
 class Transpiler {
 
@@ -30,6 +34,15 @@ class Transpiler {
 		 */
 		this.encoder = encoder;
 
+		/**
+		 * The linker. It processes the AST and resolves
+		 * variable and function references, ensuring that all
+		 * dependencies are properly linked.
+		 *
+		 * @type {Linker}
+		 */
+		this.linker = new Linker();
+
 	}
 
 	/**
@@ -40,7 +53,12 @@ class Transpiler {
 	 */
 	parse( source ) {
 
-		return this.encoder.emit( this.decoder.parse( source ) );
+		const ast = this.decoder.parse( source );
+
+		// Process the AST to resolve variable and function references and optimizations.
+		this.linker.process( ast );
+
+		return this.encoder.emit( ast );
 
 	}
 

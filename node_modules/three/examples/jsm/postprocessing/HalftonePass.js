@@ -26,6 +26,7 @@ import { HalftoneShader } from '../shaders/HalftoneShader.js';
  * ```
  *
  * @augments Pass
+ * @three_import import { HalftonePass } from 'three/addons/postprocessing/HalftonePass.js';
  */
 class HalftonePass extends Pass {
 
@@ -107,7 +108,7 @@ class HalftonePass extends Pass {
 	 * Sets the size of the pass.
 	 *
 	 * @param {number} width - The width to set.
-	 * @param {number} height - The width to set.
+	 * @param {number} height - The height to set.
 	 */
  	setSize( width, height ) {
 
