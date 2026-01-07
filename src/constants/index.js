@@ -202,51 +202,6 @@ const expLogos = [
     },
 ];
 
-const testimonials = [
-    {
-        name: "Esther Howard",
-        mentions: "@estherhoward",
-        review:
-            "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-        imgPath: "/images/client1.png",
-    },
-    {
-        name: "Wade Warren",
-        mentions: "@wadewarren",
-        review:
-            "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-        imgPath: "/images/client3.png",
-    },
-    {
-        name: "Guy Hawkins",
-        mentions: "@guyhawkins",
-        review:
-            "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-        imgPath: "/images/client2.png",
-    },
-    {
-        name: "Marvin McKinney",
-        mentions: "@marvinmckinney",
-        review:
-            "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-        imgPath: "/images/client5.png",
-    },
-    {
-        name: "Floyd Miles",
-        mentions: "@floydmiles",
-        review:
-            "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-        imgPath: "/images/client4.png",
-    },
-    {
-        name: "Albert Flores",
-        mentions: "@albertflores",
-        review:
-            "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-        imgPath: "/images/client6.png",
-    },
-];
-
 const socialImgs = [
     {
         name: "insta",
@@ -277,7 +232,7 @@ export const myProjects = [
         subdesc:
             'Built as a unique Software-as-a-Service app with Next.js 14, Tailwind CSS, TypeScript, Framer Motion and Convex, Podcastr is designed for optimal performance and scalability.',
         href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
-        texture: '/textures/project/project1.mp4',
+        texture: '/textures/project/QRFast.mp4',
         logo: '/assets/project-logo1.png',
         logoStyle: {
             backgroundColor: '#2A1816',
@@ -345,37 +300,131 @@ export const myProjects = [
             },
         ],
     },
+    {
+        title: 'StarCraft II Stalker Rush Bot',
+        desc: 'A C++ bot designed for a Protoss Stalker Rush strategy. Achieved 70% win rate against CheatMoney and CheatVision difficulties, and around 45% against CheatInsane.',
+        subdesc:
+            'Built using C++ and the StarCraft II API, this AI bot implements advanced scouting and aggressive attack strategies to dominate opponents with precise micro-management and strategic decision-making.',
+        href: 'https://github.com/yourusername/starcraft-bot',
+        textures: [
+            { name: 'Scouting', path: '/textures/project/fastscouting.mp4' },
+            { name: 'Attacking', path: '/textures/project/fastattacking.mp4' }
+        ],
+        texture: '/textures/project/fastscouting.mp4',
+        logo: '/images/logos/sc2.png',
+        logoStyle: {
+            backgroundColor: '#1A1A2E',
+            border: '0.2px solid #16213E',
+            boxShadow: '0px 0px 60px 0px #0F3460',
+        },
+        spotlight: '/assets/spotlight3.png',
+        tags: [
+            {
+                id: 1,
+                name: 'C++',
+                path: '/images/logos/cpp.png',
+            },
+            {
+                id: 2,
+                name: 'Game Development',
+                path: '/images/logos/game-development.png',
+            },
+        ],
+    },
 
 ];
 
 export const workExperiences = [
-  {
+
+{
     id: 1,
-    name: 'Framer',
-    pos: 'Lead Web Developer',
-    duration: '2022 - Present',
-    title: "Framer serves as my go-to tool for creating interactive prototypes. I use it to bring designs to  life, allowing stakeholders to experience the user flow and interactions before development.",
-    icon: '/assets/framer.svg',
-    animation: 'victory',
+    name: 'Fluenty Language Learning Platform',
+    pos: 'Full Stack Developer',
+    duration: 'Jan 2025 - May 2025',
+    title: "Developed a comprehensive language learning platform connecting native Canadian English instructors with Brazilian students. Built with modern full-stack technologies including React and Django, featuring real-time video sessions via Zoom API, authentication with Google Auth, and automated email notifications through SendGrid.",
+    icon: '/images/logos/Fluenty.png',
+    techStack: ['JavaScript', 'Python', 'TailwindCSS', 'React', 'Django', 'PostgreSQL', 'Firestore', 'Docker', 'Cybera', 'SonarQube', 'Google Auth', 'Zoom API', 'SendGrid'],
   },
   {
     id: 2,
-    name: 'Figma',
-    pos: 'Web Developer',
-    duration: '2020 - 2022',
-    title: "Figma is my collaborative design platform of choice. I utilize it to work seamlessly with team members and clients, facilitating real-time feedback and design iterations. Its cloud-based.",
-    icon: '/assets/figma.svg',
-    animation: 'clapping',
+    name: 'Western Auto Group',
+    pos: 'Used Car Sales Consultant',
+    duration: 'April 2024 - December 2024',
+    title: "Achieved Performer of the Month recognition twice while managing customer relationships and sales processes using Smartsheets and DealerTrack to streamline dealership operations and track inventory.",
+    icon: '/images/logos/WAG.png',
+    techStack: ['Smartsheets', 'DealerTrack'],
   },
   {
     id: 3,
-    name: 'Notion',
-    pos: 'Junior Web Developer',
-    duration: '2019 - 2020',
-    title: "Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.",
-    icon: '/assets/notion.svg',
-    animation: 'salute',
+    name: "Denny's Restaurant",
+    pos: 'Server',
+    duration: '2020 - 2021',
+    title: "Provided exceptional customer service in a fast-paced restaurant environment, managing multiple tables, coordinating with kitchen staff, and ensuring positive dining experiences for guests.",
+    icon: '/images/logos/dennys.svg',
   },
+
+];
+
+export const skillsData = [
+    {
+        category: "Languages",
+        categoryIcon: "/images/logos/code-icon.png",
+        skills: [
+            { name: "Python", icon: "/images/logos/python.svg", years: 6 },
+            { name: "JavaScript", icon: "/images/logos/javascript.png", years: 5 },
+            { name: "Java", icon: "/images/logos/java.png", years: 3 },
+            { name: "C/C++", icon: "/images/logos/cpp.png", years: 3 },
+            { name: "SQL", icon: "/images/logos/SQL.png", years: 4 },
+            { name: "RISC-V", icon: "/images/logos/riscv.svg", years: 3 },
+        ],
+    },
+    {
+        category: "Frontend & Mobile",
+        categoryIcon: "/images/logos/ui.png",
+        skills: [
+            { name: "React", icon: "/images/logos/react.png", years: 2 },
+            { name: "Three.js", icon: "/images/logos/three.png", years: 1 },
+            { name: "Tailwind CSS", icon: "/images/logos/tailwindcss.png", years: 2 },
+            { name: "Android Studio", icon: "/images/logos/android.png", years: 3 },
+            { name: "Figma", icon: "/images/logos/figma.png", years: 3 },
+        ],
+    },
+    {
+        category: "Backend & APIs",
+        categoryIcon: "/images/logos/backend1.png",
+        skills: [
+            { name: "Django", icon: "/images/logos/django.svg", years: 3 },
+            { name: "NestJS", icon: "/images/logos/nestjs.png", years: 1 },
+            { name: "Flask", icon: "/images/logos/flask.svg", years: 2, filter: "brightness(0) invert(1)" },
+            { name: "OAuth 2.0", icon: "/images/logos/oauth.svg", years: 2, filter: "brightness(0) invert(1)" },
+
+        ],
+    },
+    {
+        category: "Cloud & Infrastructure",
+        categoryIcon: "/images/logos/infrastructure.png",
+        skills: [
+            { name: "Docker", icon: "/images/logos/docker.png", years: 2 },
+            { name: "Microsoft Azure", icon: "/images/logos/azure.png", years: 1 },
+            { name: "GitHub", icon: "/images/logos/github.png", years: 5, filter: "brightness(0) invert(1)" },
+            { name: "Linux", icon: "/images/logos/linux.png", years: 4 },
+            { name: "Firebase", icon: "/images/logos/firebase.png", years: 3 },
+            { name: "Supabase", icon: "/images/logos/supabase.png", years: 2 },
+        ],
+    },
+    {
+        category: "Databases & Tools",
+        categoryIcon: "/images/logos/tools.png",
+        skills: [
+            { name: "PostgreSQL", icon: "/images/logos/postgresql.png", years: 3 },
+            { name: "MongoDB", icon: "/images/logos/mongodb.png", years: 3 },
+            { name: "Firebase Firestore", icon: "/images/logos/firestore.png", years: 3 },
+            { name: "Git", icon: "/images/logos/git.svg", years: 5 },
+            { name: "SonarQube", icon: "/images/logos/sonarqube.svg", years: 2, filter: "brightness(0) invert(1)" },
+            { name: "Espresso", icon: "/images/logos/blender.png", years: 1 },
+            { name: "Tableau", icon: "/images/logos/tableau.png", years: 1 },
+        ],
+    },
 ];
 
 export {
@@ -385,7 +434,6 @@ export {
     counterItems,
     expCards,
     expLogos,
-    testimonials,
     socialImgs,
     techStackIcons,
     techStackImgs,

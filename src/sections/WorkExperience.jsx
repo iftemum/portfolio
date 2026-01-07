@@ -1,39 +1,7 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
-
-const workExperiences = [
-    {
-        id: 1,
-        company: 'Tech Innovations Inc.',
-        position: 'Senior Full Stack Developer',
-        duration: 'Jan 2023 - Present',
-        description: 'Led development of cloud-based enterprise solutions using React, Node.js, and AWS. Managed a team of 5 developers and improved application performance by 40%.',
-        technologies: ['React', 'Node.js', 'AWS', 'MongoDB', 'TypeScript'],
-        icon: '💼',
-        color: '#6366f1'
-    },
-    {
-        id: 2,
-        company: 'Digital Creative Studio',
-        position: 'Frontend Developer',
-        duration: 'Mar 2021 - Dec 2022',
-        description: 'Developed interactive web experiences and 3D visualizations for Fortune 500 clients. Collaborated with design teams to create pixel-perfect implementations.',
-        technologies: ['Three.js', 'React', 'GSAP', 'WebGL', 'JavaScript'],
-        icon: '🎨',
-        color: '#8b5cf6'
-    },
-    {
-        id: 3,
-        company: 'StartUp Labs',
-        position: 'Junior Developer',
-        duration: 'Jun 2019 - Feb 2021',
-        description: 'Built responsive web applications and contributed to open-source projects. Participated in agile development processes and code reviews.',
-        technologies: ['JavaScript', 'Vue.js', 'Python', 'PostgreSQL', 'Docker'],
-        icon: '🚀',
-        color: '#ec4899'
-    }
-];
+import { workExperiences } from '../constants/index.js';
 
 const WorkExperience = () => {
     const cardsRef = useRef([]);
@@ -77,11 +45,8 @@ const WorkExperience = () => {
 
                         {/* Icon Header */}
                         <div className="flex items-start justify-between mb-6">
-                            <div
-                                className="w-14 h-14 rounded-lg flex items-center justify-center text-3xl backdrop-blur-sm"
-                                style={{ backgroundColor: `${experience.color}20`, border: `1px solid ${experience.color}40` }}
-                            >
-                                {experience.icon}
+                            <div className="w-14 h-14 rounded-lg flex items-center justify-center backdrop-blur-sm overflow-hidden bg-black-100 border border-black-50">
+                                <img src={experience.icon} alt={experience.name} className="w-10 h-10 object-contain" />
                             </div>
                             <div className="text-right">
                                 <p className="text-white-50 text-sm">{experience.duration}</p>
@@ -91,38 +56,34 @@ const WorkExperience = () => {
                         {/* Company & Position */}
                         <div className="mb-4">
                             <h3 className="text-white text-xl font-bold mb-2 group-hover:text-white/90 transition-colors">
-                                {experience.position}
+                                {experience.pos}
                             </h3>
-                            <p
-                                className="text-lg font-semibold"
-                                style={{ color: experience.color }}
-                            >
-                                {experience.company}
+                            <p className="text-lg font-semibold text-white-600">
+                                {experience.name}
                             </p>
                         </div>
 
                         {/* Description */}
                         <p className="text-white-50 text-sm leading-relaxed mb-6">
-                            {experience.description}
+                            {experience.title}
                         </p>
 
                         {/* Technologies */}
-                        <div className="flex flex-wrap gap-2">
-                            {experience.technologies.map((tech, techIndex) => (
-                                <span
-                                    key={techIndex}
-                                    className="px-3 py-1 bg-black-100 text-white-50 text-xs rounded-full border border-black-50 hover:border-white/30 transition-all duration-300"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
+                        {experience.techStack && (
+                            <div className="flex flex-wrap gap-2">
+                                {experience.techStack.map((tech, techIndex) => (
+                                    <span
+                                        key={techIndex}
+                                        className="px-3 py-1 bg-black-100 text-white-50 text-xs rounded-full border border-black-50 hover:border-white/30 transition-all duration-300"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
 
                         {/* Hover Effect Overlay */}
-                        <div
-                            className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-xl pointer-events-none"
-                            style={{ backgroundColor: experience.color }}
-                        />
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-xl pointer-events-none bg-white" />
                     </div>
                 ))}
             </div>

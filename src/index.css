@@ -25,6 +25,7 @@ section {
     --color-black-50: #1c1c21;
     --color-black-100: #0e0e10;
     --color-black-200: #282732;
+    --color-black-300: #3a3a48;
     --color-blue-50: #839cb5;
     --color-blue-100: #2d2d38;
 }
@@ -239,6 +240,14 @@ section {
             img {
                 @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
             }
+        }
+    }
+
+    .tech-logo {
+        @apply w-10 h-10 p-2 rounded-lg bg-black-300/50 flex items-center justify-center shrink-0;
+
+        img {
+            @apply max-w-full max-h-full object-contain;
         }
     }
 
@@ -481,4 +490,162 @@ section {
 
 .card:hover::before {
     opacity: 1;
+}
+
+/* Skills Section Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-40px) translateX(-10px);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translateY(-20px) translateX(5px);
+        opacity: 0.6;
+    }
+}
+
+.skill-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+}
+
+.skill-bar {
+    animation: fillBar 1.5s ease-out forwards;
+    transform-origin: left;
+}
+
+@keyframes fillBar {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.skill-icon-wrapper {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.category-header {
+    position: relative;
+}
+
+.category-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skill-category:hover .category-header::after {
+    width: 100%;
+}
+
+/* Glow effect for skill cards */
+.skill-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+    filter: blur(20px);
+}
+
+.skill-card:hover::after {
+    opacity: 0.3;
+}
+
+/* Particle animation */
+.particle {
+    animation: particleFloat 10s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+    }
+    25% {
+        transform: translate(10px, -15px) scale(1.2);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-15px, -30px) scale(0.8);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translate(5px, -15px) scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Text gradient animation */
+.text-gradient {
+    background-size: 200% auto;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    grid-auto-rows: 130px;
+}
+
+@media (min-width: 640px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: 140px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .bento-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }

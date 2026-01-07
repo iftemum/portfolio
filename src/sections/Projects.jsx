@@ -12,6 +12,7 @@ const projectCount = myProjects.length;
 
 const Projects = () => {
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
     const handleNavigation = (direction) => {
         setSelectedProjectIndex((prevIndex) => {
@@ -21,6 +22,20 @@ const Projects = () => {
                 return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
             }
         });
+        setCurrentVideoIndex(0); // Reset video index when changing projects
+    };
+
+    const handleVideoSwitch = (direction) => {
+        const currentProject = myProjects[selectedProjectIndex];
+        if (!currentProject.textures) return;
+
+        setCurrentVideoIndex((prevIndex) => {
+            if (direction === 'previous') {
+                return prevIndex === 0 ? currentProject.textures.length - 1 : prevIndex - 1;
+            } else {
+                return prevIndex === currentProject.textures.length - 1 ? 0 : prevIndex + 1;
+            }
+        });
     };
 
     useGSAP(() => {
@@ -28,13 +43,16 @@ const Projects = () => {
     }, [selectedProjectIndex]);
 
     const currentProject = myProjects[selectedProjectIndex];
+    const currentTexture = currentProject.textures
+        ? currentProject.textures[currentVideoIndex].path
+        : currentProject.texture;
 
     return (
         <section id="projects" className="c-space my-20">
             <p className="head-text">My Selected Work</p>
 
-            <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-                <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
+            <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full max-w-7xl mx-auto">
+                <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 min-h-[600px]">
                     <div className="absolute top-0 right-0">
                         <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
                     </div>
@@ -54,7 +72,7 @@ const Projects = () => {
                         <div className="flex items-center gap-3">
                             {currentProject.tags.map((tag, index) => (
                                 <div key={index} className="tech-logo">
-                                    <img src={tag.path} alt={tag.name} />
+                                    <img src={tag.path} alt={tag.name} className="w-6 h-6 object-contain" />
                                 </div>
                             ))}
                         </div>
@@ -80,14 +98,35 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
+                <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full relative">
+                    {/* Video Switcher - Only for StarCraft II project */}
+                    {currentProject.textures && (
+                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 flex items-center gap-3 bg-black-300/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
+                            <button
+                                onClick={() => handleVideoSwitch('previous')}
+                                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded transition-colors"
+                                aria-label="Previous video">
+                                <img src="/assets/left-arrow.png" alt="previous" className="w-4 h-4" />
+                            </button>
+                            <span className="text-white-600 text-sm font-medium min-w-20 text-center">
+                                {currentProject.textures[currentVideoIndex].name}
+                            </span>
+                            <button
+                                onClick={() => handleVideoSwitch('next')}
+                                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded transition-colors"
+                                aria-label="Next video">
+                                <img src="/assets/right-arrow.png" alt="next" className="w-4 h-4" />
+                            </button>
+                        </div>
+                    )}
+
                     <Canvas>
                         <ambientLight intensity={Math.PI} />
                         <directionalLight position={[10, 10, 5]} />
                         <Center>
                             <Suspense fallback={<CanvasLoader />}>
                                 <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                                    <DemoComputer texture={currentProject.texture} />
+                                    <DemoComputer texture={currentTexture} />
                                 </group>
                             </Suspense>
                         </Center>
