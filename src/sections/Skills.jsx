@@ -125,7 +125,7 @@ const Skills = () => {
 
     return (
         <section id="skills" className="c-space my-20">
-            <p ref={titleRef} className="head-text">Technical Skills</p>
+            <p ref={titleRef} className="head-text">How I Can Contribute & My Key Skills</p>
 
             <div className="mt-12">
                 {skillsData.map((category) => (

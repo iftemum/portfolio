@@ -110,13 +110,17 @@ const AboutMe = () => {
                                     <div className="flex-1">
                                         <div className="mb-6">
                                             <h2 className="text-3xl font-bold text-white mb-2">Iftemum Raian</h2>
-                                            <p className="text-xl text-gray-400 mb-4">@iftemumraian</p>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <p className="text-xl text-gray-400">@iftemumraian</p>
+                                                <span className="text-gray-500">•</span>
+                                                <p className="text-sm text-gray-400 bg-black-300 px-3 py-1 rounded-full border border-gray-700">He/Him</p>
+                                            </div>
 
                                             <p className="text-white-50 leading-relaxed mb-6">
                                                 Recent Computer Science Graduate | Full Stack Developer | Mobile App Developer 
                                                 <br />
                                                 <br />
-                                                I graduated from University of Alberta in December 2026 with a BSc. Specialization in Computing Science. I specialized in algorithms, data structures, and software engineering. Currently my mission is to build sustainable projects to make a positive impact on the world. I believe in the power of technology to create meaningful change, one project at a time.
+                                                I graduated from University of Alberta in December 2026 with a BSc. Specialization in Computing Science. I specialized in algorithms, data structures, software quality and software engineering. Currently my mission is to build sustainable projects to make a positive impact on the world. I believe in the power of technology to create meaningful change, one project at a time.
                                                 Currently experimenting with solutions for everyday waste reduction.
                                             </p>
                                         </div>
@@ -218,7 +222,7 @@ const AboutMe = () => {
 
                 {/* MacBook Bottom */}
                 <div className="bg-gray-800 rounded-b-xl p-1 border border-t-0 border-gray-700">
-                    <div className="h-1 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded"></div>
+                    <div className="h-1 bg-linear-to-r from-gray-700 via-gray-600 to-gray-700 rounded"></div>
                 </div>
 
                 {/* MacBook Base */}

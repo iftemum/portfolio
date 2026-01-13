@@ -52,7 +52,7 @@ const Projects = () => {
             <p className="head-text">My Selected Work</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full max-w-7xl mx-auto">
-                <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 min-h-[600px]">
+                <div className="flex flex-col relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 min-h-[600px] pb-20">
                     <div className="absolute top-0 right-0">
                         <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
                     </div>
@@ -61,18 +61,21 @@ const Projects = () => {
                         <img className="w-10 h-10 shadow-sm" src={currentProject.logo} alt="logo" />
                     </div>
 
-                    <div className="flex flex-col gap-5 text-white-600 my-5">
+                    <div className="flex flex-col gap-5 text-white-600 my-5 flex-grow">
                         <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
 
                         <p className="animatedText">{currentProject.desc}</p>
                         <p className="animatedText">{currentProject.subdesc}</p>
                     </div>
 
-                    <div className="flex items-center justify-between flex-wrap gap-5">
+                    <div className="flex items-center justify-between flex-wrap gap-5 mt-5 mb-16">
                         <div className="flex items-center gap-3">
                             {currentProject.tags.map((tag, index) => (
-                                <div key={index} className="tech-logo">
+                                <div key={index} className="tech-logo group relative">
                                     <img src={tag.path} alt={tag.name} className="w-6 h-6 object-contain" />
+                                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black-300 text-white-600 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                        {tag.name}
+                                    </span>
                                 </div>
                             ))}
                         </div>
@@ -82,14 +85,14 @@ const Projects = () => {
                             href={currentProject.href}
                             target="_blank"
                             rel="noreferrer">
-                            <p>Check Live Site</p>
+                            <p>{currentProject.linkText || 'Check Live Site'}</p>
                             <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
                         </a>
                     </div>
 
-                    <div className="flex justify-between items-center mt-7">
+                    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex justify-between items-center w-[calc(100%-5rem)]">
                         <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
-                            <img src="/assets/left-arrow.png" alt="left arrow" />
+                            <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
                         </button>
 
                         <button className="arrow-btn" onClick={() => handleNavigation('next')}>

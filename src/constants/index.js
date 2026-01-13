@@ -1,23 +1,5 @@
-const navLinks = [
-    {
-        name: "Work",
-        link: "#work",
-    },
-    {
-        name: "Experience",
-        link: "#experience",
-    },
-    {
-        name: "Skills",
-        link: "#skills",
-    },
-    {
-        name: "Testimonials",
-        link: "#testimonials",
-    },
-];
 
-const words = [
+export const words = [
     { text: "Ideas", imgPath: "/images/ideas.svg" },
     { text: "Concepts", imgPath: "/images/concepts.svg" },
     { text: "Designs", imgPath: "/images/designs.svg" },
@@ -28,284 +10,84 @@ const words = [
     { text: "Code", imgPath: "/images/code.svg" },
 ];
 
-const counterItems = [
-    { value: 15, suffix: "+", label: "Years of Experience" },
-    { value: 200, suffix: "+", label: "Satisfied Clients" },
-    { value: 108, suffix: "+", label: "Completed Projects" },
-    { value: 90, suffix: "%", label: "Client Retention Rate" },
-];
 
-const logoIconsList = [
-    {
-        imgPath: "/images/logos/company-logo-1.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-2.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-3.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-4.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-5.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-6.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-7.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-8.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-9.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-10.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-11.png",
-    },
-];
 
-const abilities = [
-    {
-        imgPath: "/images/seo.png",
-        title: "Quality Focus",
-        desc: "Delivering high-quality results while maintaining attention to every detail.",
-    },
-    {
-        imgPath: "/images/chat.png",
-        title: "Reliable Communication",
-        desc: "Keeping you updated at every step to ensure transparency and clarity.",
-    },
-    {
-        imgPath: "/images/time.png",
-        title: "On-Time Delivery",
-        desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
-    },
-];
-
-const techStackImgs = [
-    {
-        name: "React Developer",
-        imgPath: "/images/logos/react.png",
-    },
-    {
-        name: "Python Developer",
-        imgPath: "/images/logos/python.svg",
-    },
-    {
-        name: "Backend Developer",
-        imgPath: "/images/logos/node.png",
-    },
-    {
-        name: "Interactive Developer",
-        imgPath: "/images/logos/three.png",
-    },
-    {
-        name: "Project Manager",
-        imgPath: "/images/logos/git.svg",
-    },
-];
-
-const techStackIcons = [
-    {
-        name: "React Developer",
-        modelPath: "/models/react_logo-transformed.glb",
-        scale: 1,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Python Developer",
-        modelPath: "/models/python-transformed.glb",
-        scale: 0.8,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Backend Developer",
-        modelPath: "/models/node-transformed.glb",
-        scale: 5,
-        rotation: [0, -Math.PI / 2, 0],
-    },
-    {
-        name: "Interactive Developer",
-        modelPath: "/models/three.js-transformed.glb",
-        scale: 0.05,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Project Manager",
-        modelPath: "/models/git-svg-transformed.glb",
-        scale: 0.05,
-        rotation: [0, -Math.PI / 4, 0],
-    },
-];
-
-const expCards = [
-    {
-        review:
-            "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-        imgPath: "/images/exp1.png",
-        logoPath: "/images/logo1.png",
-        title: "Frontend Developer",
-        date: "January 2023 - Present",
-        responsibilities: [
-            "Developed and maintained user-facing features for the Hostinger website.",
-            "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-            "Optimized web applications for maximum speed and scalability.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-        imgPath: "/images/exp2.png",
-        logoPath: "/images/logo2.png",
-        title: "Full Stack Developer",
-        date: "June 2020 - December 2023",
-        responsibilities: [
-            "Led the development of Docker's web applications, focusing on scalability.",
-            "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-            "Contributed to open-source projects that were used with the Docker ecosystem.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-        imgPath: "/images/exp3.png",
-        logoPath: "/images/logo3.png",
-        title: "React Native Developer",
-        date: "March 2019 - May 2020",
-        responsibilities: [
-            "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-            "Improved app performance and user experience through code optimization and testing.",
-            "Coordinated with the product team to implement features based on feedback.",
-        ],
-    },
-];
-
-const expLogos = [
-    {
-        name: "logo1",
-        imgPath: "/images/logo1.png",
-    },
-    {
-        name: "logo2",
-        imgPath: "/images/logo2.png",
-    },
-    {
-        name: "logo3",
-        imgPath: "/images/logo3.png",
-    },
-];
-
-const socialImgs = [
-    {
-        name: "insta",
-        url: "https://www.instagram.com/",
-        imgPath: "/images/insta.png",
-    },
-    {
-        name: "fb",
-        url: "https://www.facebook.com/",
-        imgPath: "/images/fb.png",
-    },
-    {
-        name: "x",
-        url: "https://www.x.com/",
-        imgPath: "/images/x.png",
-    },
-    {
-        name: "linkedin",
-        url: "https://www.linkedin.com/",
-        imgPath: "/images/linkedin.png",
-    },
-];
 
 export const myProjects = [
     {
-        title: 'Podcastr - AI Podcast Platform',
-        desc: 'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
-        subdesc:
-            'Built as a unique Software-as-a-Service app with Next.js 14, Tailwind CSS, TypeScript, Framer Motion and Convex, Podcastr is designed for optimal performance and scalability.',
-        href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
+        title: 'Fluenty - Language Learning Platform',
+        desc: 'A full-featured education platform connecting native Canadian English instructors with Brazilian students through their schools. Core features include flexible session scheduling with individual and group bookings (up to 4 students), real-time video integration, automated email notifications for upcoming sessions, comprehensive progress tracking with instructor feedback, custom quiz creation and assessment tools, and profile management for students, instructors, and administrators. The platform streamlines the entire learning experience from booking to feedback.',
+        href: 'https://youtu.be/N_T5LnHEnsg?si=LJXohXDsvFchV1Ba',
+        linkText: 'Check Full Demo',
+        texture: '/textures/project/FluentyFast.mp4',
+        logo: '/images/logos/Fluenty.png',
+        logoStyle: {
+            backgroundColor: '#1E3A5F',
+            border: '0.2px solid #2C5282',
+            boxShadow: '0px 0px 60px 0px #2B6CB04D',
+        },
+        spotlight: '/assets/spotlight4.png',
+        tags: [
+            {
+                id: 1,
+                name: 'React',
+                path: '/assets/react.svg',
+            },
+            {
+                id: 2,
+                name: 'Django',
+                path: '/images/logos/django.svg',
+            },
+            {
+                id: 3,
+                name: 'PostgreSQL',
+                path: '/images/logos/postgresql.png',
+            },
+            {
+                id: 4,
+                name: 'Docker',
+                path: '/images/logos/docker.png',
+            },
+        ],
+    },
+    {
+        title: 'QuickScanPro - Android Event Management App',
+        desc: 'A comprehensive event management platform enabling organizers to host events and attendees to discover and join nearby activities. Key features include event browsing and search functionality, flexible QR code-based check-in system where organizers can set any image as the event QR code, real-time attendee tracking, geolocation services with interactive heatmaps showing sign-up locations, role-based access for organizers and attendees, event notifications, and Firebase-powered real-time updates. The app streamlines the entire event lifecycle from creation to attendee management.',
+        href: 'https://github.com/iftemum/QuickScanQuestPro',
+        linkText: 'Check Project Repo',
         texture: '/textures/project/QRFast.mp4',
-        logo: '/assets/project-logo1.png',
+        logo: '/images/logos/QuickScanLogo.png',
         logoStyle: {
-            backgroundColor: '#2A1816',
-            border: '0.2px solid #36201D',
-            boxShadow: '0px 0px 60px 0px #AA3C304D',
+            backgroundColor: '#1A2B1A',
+            border: '0.2px solid #2D4A2D',
+            boxShadow: '0px 0px 60px 0px #3DDC844D',
         },
-        spotlight: '/assets/spotlight1.png',
+        spotlight: '/assets/spotlight5.png',
         tags: [
             {
                 id: 1,
-                name: 'React.js',
-                path: '/assets/react.svg',
+                name: 'Java',
+                path: '/images/logos/java.png',
             },
             {
                 id: 2,
-                name: 'TailwindCSS',
-                path: 'assets/tailwindcss.png',
+                name: 'Android',
+                path: '/images/logos/android.png',
             },
             {
                 id: 3,
-                name: 'TypeScript',
-                path: '/assets/typescript.png',
-            },
-            {
-                id: 4,
-                name: 'Framer Motion',
-                path: '/assets/framer.png',
+                name: 'Firebase',
+                path: '/images/logos/firebase.png',
             },
         ],
     },
     {
-        title: 'LiveDoc - Real-Time Google Docs Clone',
-        desc: 'LiveDoc is a powerful collaborative app that elevates the capabilities of real-time document editing. As an enhanced version of Google Docs, It supports millions of collaborators simultaneously, ensuring that every change is captured instantly and accurately.',
-        subdesc:
-            'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
-        href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-        texture: '/textures/project/project2.mp4',
-        logo: '/assets/project-logo2.png',
-        logoStyle: {
-            backgroundColor: '#13202F',
-            border: '0.2px solid #17293E',
-            boxShadow: '0px 0px 60px 0px #2F6DB54D',
-        },
-        spotlight: '/assets/spotlight2.png',
-        tags: [
-            {
-                id: 1,
-                name: 'React.js',
-                path: '/assets/react.svg',
-            },
-            {
-                id: 2,
-                name: 'TailwindCSS',
-                path: 'assets/tailwindcss.png',
-            },
-            {
-                id: 3,
-                name: 'TypeScript',
-                path: '/assets/typescript.png',
-            },
-            {
-                id: 4,
-                name: 'Framer Motion',
-                path: '/assets/framer.png',
-            },
-        ],
-    },
-    {
-        title: 'StarCraft II Stalker Rush Bot',
+        title: 'StarCraft II Stalker Rush AI Bot',
         desc: 'A C++ bot designed for a Protoss Stalker Rush strategy. Achieved 70% win rate against CheatMoney and CheatVision difficulties, and around 45% against CheatInsane.',
         subdesc:
             'Built using C++ and the StarCraft II API, this AI bot implements advanced scouting and aggressive attack strategies to dominate opponents with precise micro-management and strategic decision-making.',
-        href: 'https://github.com/yourusername/starcraft-bot',
+        href: 'https://github.com/iftemum/StarCraftIIBot',
+        linkText: 'Check Project Repo',
         textures: [
             { name: 'Scouting', path: '/textures/project/fastscouting.mp4' },
             { name: 'Attacking', path: '/textures/project/fastattacking.mp4' }
@@ -339,11 +121,11 @@ export const workExperiences = [
 {
     id: 1,
     name: 'Fluenty Language Learning Platform',
-    pos: 'Full Stack Developer',
+    pos: 'Product Manager & Full Stack Developer',
     duration: 'Jan 2025 - May 2025',
-    title: "Developed a comprehensive language learning platform connecting native Canadian English instructors with Brazilian students. Built with modern full-stack technologies including React and Django, featuring real-time video sessions via Zoom API, authentication with Google Auth, and automated email notifications through SendGrid.",
+    title: "Led an 8-member Agile team as Scrum Master, coordinating sprints and client communications to gather requirements and create project roadmaps following Agile methodologies. Designed the frontend UI with React and Tailwind CSS for intuitive user experience. Developed backend features including custom quiz creation and grading system for instructors, student progress tracking indicators, video chat integration via Zoom API, automated email notifications through SendGrid, and Google Calendar integration for upcoming class scheduling. Implemented CI/CD pipeline using GitHub Actions and ensured code quality with SonarQube, achieving an 'A' ranking in reliability, security, and maintainability.",
     icon: '/images/logos/Fluenty.png',
-    techStack: ['JavaScript', 'Python', 'TailwindCSS', 'React', 'Django', 'PostgreSQL', 'Firestore', 'Docker', 'Cybera', 'SonarQube', 'Google Auth', 'Zoom API', 'SendGrid'],
+    techStack: ['JavaScript', 'Python', 'TailwindCSS', 'React', 'Django', 'PostgreSQL', 'Firestore', 'Docker', 'Cybera', 'SonarQube', 'Google Auth', 'Zoom API', 'SendGrid', 'GitHub Actions'],
   },
   {
     id: 2,
@@ -427,16 +209,4 @@ export const skillsData = [
     },
 ];
 
-export {
-    words,
-    abilities,
-    logoIconsList,
-    counterItems,
-    expCards,
-    expLogos,
-    socialImgs,
-    techStackIcons,
-    techStackImgs,
-    navLinks,
-};
 

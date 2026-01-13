@@ -1,17 +1,17 @@
-import React from 'react'
+import { useRef } from 'react'
 import {Canvas} from '@react-three/fiber'
 import {OrbitControls} from "@react-three/drei";
 import {useMediaQuery} from "react-responsive";
 import {Room} from "./Room.jsx";
 import HeroLights from "./HeroLights.jsx";
+import { EffectComposer, SelectiveBloom } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 
 const HeroExperience = () => {
     const isTablet = useMediaQuery({query: '(max-width: 1024px)'});
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
-
-
-
+    const screensRef = useRef();
 
     return (
         <Canvas camera={{ position: [0,0,15], fov:45}}>
@@ -31,9 +31,18 @@ const HeroExperience = () => {
                 position={[0, -3.5, 0]}
                 rotation={[0, -Math.PI / 4, 0]}
             >
-
-            <Room/>
+                <Room ref={screensRef}/>
             </group>
+
+            <EffectComposer>
+                <SelectiveBloom
+                    selection={screensRef}
+                    intensity={1.5}
+                    luminanceThreshold={0.2}
+                    luminanceSmoothing={0.9}
+                    blendFunction={BlendFunction.ADD}
+                />
+            </EffectComposer>
         </Canvas>
     );
 };
