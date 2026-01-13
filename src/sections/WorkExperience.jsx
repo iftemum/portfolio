@@ -31,7 +31,7 @@ const WorkExperience = () => {
     }, []);
 
     return (
-        <section id="work" className="c-space my-20">
+        <section id="work" className="c-space my-20 work-experience-section">
             <p className="head-text work-title">Work Experience</p>
 
             <div className="mt-12 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">

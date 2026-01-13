@@ -24,7 +24,7 @@ const AboutMe = () => {
     }, []);
 
     return (
-        <section id="about" className="c-space my-20">
+        <section id="about" className="c-space my-20 about-section">
             <p className="head-text mb-12">About Me</p>
 
             {/* MacBook Frame */}
